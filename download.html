@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Youtube to MP3 Convertor</title>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<style>
+
+
+.ythumbnail img {
+   height: 225px;
+   width: 400px;
+}
+
+
+</style>
+
+
+</head>
+<body>
+
+<div id="video_container" class="text-center">
+    <label for="txtUrl">URL:</label>
+    <input type="text" id="txtUrl" name="fname">
+    <button type="submit" onclick="getListFormats()">Process!</button>
+</div>
+<div id="listFormats">
+	<div class="ythumbnail"></div>
+    <div id="resourceId"></div>
+    <div id="videoTitle"></div><br>
+    <div id="listVideos"></div><br>
+    <div id="listAudios"></div><br>
+</div>
+<div id="error"></div>
+
+<script>
+		$("#txtUrl").bind("paste", function(e){
+		// access the clipboard using the api
+		var pastedData = e.originalEvent.clipboardData.getData('text');
+		getListFormats(pastedData);
+		} );
+		
+		function getListFormats(pastedData) {
+    	let inputUrl = $('#txtUrl').val();
+    	if(inputUrl !== ""){
+    		pastedData = inputUrl;
+    	}
+        
+		let url =  'http://ytmp3.cm/listFormats?url=' + encodeURIComponent(pastedData);        console.log(url);
+        $.getJSON(url, function (data) {
+            console.log(data);
+            try {
+                if (!data.error) {
+                    showListFormats(data.formats);
+                    $('#error').hide();
+                } else {
+                    $('#error').text('Failed to get list format:' + data.status);
+                    $('#error').show();
+                    $('#listFormats').hide();
+                }
+            } catch (e) {
+                console.log(e);
+            }
+        });
+    }
+    let listTimers = {};
+    function doConvert(resId, formatId) {
+        let urlConvert = 'http://49.12.43.222/convert?id=' + resId + '&formatId=' + formatId;
+
+        $.getJSON(urlConvert, function (data) {
+            try {
+                if (!data.error) {
+                    let timer = listTimers[resId + formatId];
+                    if (!timer) {
+                        getDownloadLink(resId, formatId);
+                        timer = setInterval(function () {
+                            getDownloadLink(resId, formatId);
+                        }, 3000);
+                        listTimers[resId + formatId] = timer;
+                    }
+                } else {
+                    $('error').text('Failed to convert format:' + data.status);
+                }
+            } catch (e) {
+                console.log(e);
+            }
+        });
+
+    }
+
+    function getDownloadLink(resId, formatId) {
+        let url = 'http://49.12.43.222/getLink?id=' + resId + '&formatId=' + formatId;
+        $.getJSON(url, function (data) {
+            try {
+                if (!data.error) {
+                    let node = document.getElementById(`status${formatId}`);
+                    node.innerHTML = data.status + '  ';
+                    if (data.url) {
+                        // create download button
+                        let btn = document.createElement('button');
+                        btn.type = "submit";
+                        btn.innerHTML = 'Download';
+                        btn.onclick = function () {
+                            window.open(data.url);
+                        };
+                        node.appendChild(btn);
+
+                        // cancel timer
+                        let timer = listTimers[resId + formatId];
+                        if (timer) {
+                            clearInterval(timer);
+                            delete listTimers[resId + formatId]
+                        }
+                    } else {
+                        if (data.status == 'failed') {
+                            // failed to convert file
+                            // cancel timer
+                            let timer = listTimers[resId + formatId];
+                            if (timer) {
+                                clearInterval(timer);
+                                delete listTimers[resId + formatId]
+                            }
+                        }
+                    }
+                } else {
+                    $('error').text('Failed to get download link:' + data.status);
+                }
+            } catch (e) {
+                console.log(e);
+            }
+        });
+    }
+
+    var extractHostname = function (url) {
+        var hostname;
+        //find & remove protocol (http, ftp, etc.) and get hostname
+
+        if (url.indexOf("//") > -1) {
+            hostname = url.split('/')[2];
+        }
+        else {
+            hostname = url.split('/')[0];
+        }
+
+        // find & remove port number
+        hostname = hostname.split(':')[0];
+
+        // find & remove "?"
+        hostname = hostname.split('?')[0];
+        if (url.indexOf('https://') == 0) {
+            return 'https://' + hostname;
+        } else {
+            return 'http://' + hostname;
+        }
+
+    }
+    var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+        }
+    };
+
+    if (typeof Object.assign != 'function') {
+        Object.assign = function (target) {
+            'use strict';
+            if (target == null) {
+                throw new TypeError('Cannot convert undefined or null to object');
+            }
+
+            target = Object(target);
+            for (var index = 1; index < arguments.length; index++) {
+                var source = arguments[index];
+                if (source != null) {
+                    for (var key in source) {
+                        if (Object.prototype.hasOwnProperty.call(source, key)) {
+                            target[key] = source[key];
+                        }
+                    }
+                }
+            }
+            return target;
+        };
+    }
+
+    function showListFormatsByTable(resId, listFormats, isVideo) {
+        var table_body = '<table border="1">';
+        table_body += '<tr><th>Quality</th><th>File size</th><th>Download</th></tr>';
+        for (var i = 0; i < listFormats.length; i++){
+            let format = listFormats[i];
+
+            let table_row = '<tr>';
+
+            // quality
+            table_row += '<td>' + format.quality + '</td>';
+
+            // size
+            let size = Math.floor(format.fileSize/(1024*1024));
+            table_row += '<td>' + size + ' MB' + '</td>';
+
+            // button
+            table_row += `<td id="btn${format.formatId}"></td>`;
+
+            // status
+            table_row += `<td id="status${format.formatId}"></td>`;
+
+            // done a row
+            table_row += '</tr>';
+            table_body +=  table_row;
+        }
+        table_body += '</table>';
+
+        if (isVideo) {
+            $('#listVideos').html(table_body);
+            $('#listVideos').show();
+        } else {
+            $('#listAudios').html(table_body);
+            $('#listAudios').show();
+        }
+
+        for (let format of listFormats) {
+            let node = document.getElementById(`btn${format.formatId}`);
+            let btn = document.createElement('button');
+            btn.type = "submit";
+            if (format.url) {
+                btn.innerHTML = 'Download';
+                btn.onclick = function () {
+                    window.open(format.url);
+                }
+            } else {
+                btn.innerHTML = 'Convert';
+                btn.onclick = function () {
+                    doConvert(resId, format.formatId);
+                }
+            }
+            node.appendChild(btn);
+        }
+
+    }
+    function showListFormats(formats) {
+        $('#videoTitle').text(formats.title);
+        $('#resourceId').text('Resource id: ' + formats.id + ', duration ' + formats.duration + 's');
+        showListFormatsByTable(formats.id, formats.video, true);
+        showListFormatsByTable(formats.id, formats.audio, false);
+        $(".ythumbnail").html("<img src='"+formats.thumbnail+"' alt='"+formats.title+"' />");
+        $('#listFormats').show();
+    }
+
+</script>
+</body>
+</html>
