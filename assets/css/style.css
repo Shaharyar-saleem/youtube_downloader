@@ -1,0 +1,21 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.ythumbnail img {
+    height: 225px;
+    width: 400px;
+ }
+ .nav-item .nav-link{
+     color: black !important;
+ }
+ .navbar-brand img{
+     height: 50px;
+ }
+ .navbar-brand{
+     color: black !important;
+     font-weight: bold;
+ }
+ .navbar-brand span:hover{
+     color: #fe4b48;
+ }
