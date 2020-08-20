@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Privacy Policy</title>
     <meta charset="UTF-8">
@@ -11,54 +12,75 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- Bootstrap 3 script -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>|
+    <style>
+        .accordion:after {
+            content: '\002B';
+            color: #777;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+
+        .active:after {
+            content: "\2212";
+        }
+        .active, .accordion:hover {
+            background-color: #ccc;
+        }
+    </style>
 </head>
+
 <body>
-     <!----- Navbar ----->
-   <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <!----- Navbar ----->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
 
-    <div class="container">
-        <div class="navbar-header">
-            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="index.html" class="navbar-brand"><span><img src="assets/images/logo.png" alt=""></span
-                    class="brand-text"><span>&nbsp;&nbsp;&nbsp;Youtube Downloader</span></a>
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="index.html" class="navbar-brand"><span><img src="assets/images/logo.png" alt=""></span
+                        class="brand-text"><span>&nbsp;&nbsp;&nbsp;Youtube Downloader</span></a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="privacy.html" class="active-nav">Privacy Policy</a></li>
+                    <li><a href="contact.html">Contact US</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-                <li><a href="privacy.html" class="active-nav">Privacy Policy</a></li>
-                <li><a href="contact.html">Contact US</a></li>
-            </ul>
+
+    </div>
+    <!----- navbar ends ----->
+
+    <!----- Privacy Policy ----->
+    <div class="container mt-20">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2>Privacy Policy</h2>
+            </div>
         </div>
     </div>
 
-</div>
-<!----- navbar ends ----->
-
-<!----- Privacy Policy ----->
-<div class="container mt-20">
-    <div class="row">
-      <div class="col-md-12 text-center">
-        <h2>Privacy Policy</h2>
-      </div>
+    <div class="custom_container">
+        <div class="row">
+            <div class="col-md-12">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi ducimus non at accusantium fuga, odit
+                    ex molestiae molestias veniam cumque vero id qui ipsum in mollitia consectetur quasi quae ullam!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi ducimus non at accusantium fuga, odit
+                    ex molestiae molestias veniam cumque vero id qui ipsum in mollitia consectetur quasi quae ullam!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi ducimus non at accusantium fuga, odit
+                    ex molestiae molestias veniam cumque vero id qui ipsum in mollitia consectetur quasi quae ullam!</p>
+            </div>
+        </div>
     </div>
-</div>
 
-<div class="custom_container">
-   <div class="row">
-       <div class="col-md-12">
-           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi ducimus non at accusantium fuga, odit ex molestiae molestias veniam cumque vero id qui ipsum in mollitia consectetur quasi quae ullam!</p>
-           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi ducimus non at accusantium fuga, odit ex molestiae molestias veniam cumque vero id qui ipsum in mollitia consectetur quasi quae ullam!</p>
-           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi ducimus non at accusantium fuga, odit ex molestiae molestias veniam cumque vero id qui ipsum in mollitia consectetur quasi quae ullam!</p>
-       </div>
-   </div>
-</div>
-    
 </body>
+
 </html>
