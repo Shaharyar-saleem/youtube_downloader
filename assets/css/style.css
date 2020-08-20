@@ -30,6 +30,9 @@ th, td{
 table{
     width: 100%;
 }
+h2{
+    letter-spacing: 3px;
+}
 table tr td button{
     border: none;
     padding: 4px 12px;
@@ -51,9 +54,6 @@ table tr td button{
     color: black;
     font-weight: 600 !important;
  }
- .navbar-brand:hover{
-    color: #fe4b48;
- }
  .navbar-brand img{
      height: 42px;
  }
@@ -64,7 +64,18 @@ table tr td button{
  .navbar-nav li a{
      color: black;
  }
- 
+ .active-nav{
+     background: #eaeaea;
+ }
+ .navbar-default .navbar-nav>li>a:hover{
+     color: #ff0068;
+ }
+ .active-nav:hover{
+    background: #eaeaea !important;
+ }
+ .navbar-brand span:hover{
+    color: #ff0068;
+ }
 
  /* Video container */
 .video_container_section{
@@ -149,17 +160,40 @@ Footer ul li{
     transition: 0.4s;
   }
   
-.accordion:hover {
-    background-color: #ccc; 
+  .active, .accordion:hover {
+    background-color: #ccc;
+  }
+  
+  .accordion:after {
+    content: '\002B';
+    color: #777;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+  }
+  
+  .active:after {
+    content: "\2212";
   }
   
   .panel {
     padding: 0 18px;
-    display: none;
     background-color: white;
+    max-height: 0;
     overflow: hidden;
+    transition: max-height 0.2s ease-out;
   }
-
+ 
+  /* contact us page */
+  .social-icon ul li{
+      list-style-type: none;
+      display: inline-flex;
+  }
+  .social-icon ul li a img{
+      width: 40px;
+      height: 40px;
+      margin-right: 20px;
+  }
 /* Media Query for mobile responsivness */
 @media only screen and (max-width: 600px) {
     .custom_container{
