@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Youtube to MP3 Convertor</title>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Bootstrap 3 script -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+</head>
+
+<body>
+    <!----- Navbar ----->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="#" class="navbar-brand"><span><img src="assets/images/logo.png" alt=""></span
+                        class="brand-text"><span>&nbsp;&nbsp;&nbsp;Youtube Downloader</span></a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Contact US</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <!----- navbar ends ----->
+
+    <!----- video container section ----->
+
+    <section class="custom_container mt-20">
+        <div id="video_container" class="text-center video_container_section">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Download Video and Audio from YouTube</h3>
+                </div>
+            </div>
+            <div class="mt-10">
+                <form action="">
+                    <input type="text" id="txtUrl" name="fname" placeholder="Paste URL here">
+                    <button type="submit" onclick="getListFormats()" class="process_btn">Process!</button>
+                </form>
+                <div class="svg-loader"><svg width="60px" height="60px" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-ellipsis"
+                        style="shape-rendering: auto; animation-play-state: running; animation-delay: 0s; background: none;">
+                        <!--circle(cx="16",cy="50",r="10")-->
+                        <circle cx="84" cy="50" r="1.34307" fill="#f0ad4e"
+                            style="animation-play-state: running; animation-delay: 0s;">
+                            <animate attributeName="r" values="10;0;0;0;0" keyTimes="0;0.25;0.5;0.75;1"
+                                keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" calcMode="spline" dur="2s"
+                                repeatCount="indefinite" begin="0s"
+                                style="animation-play-state: running; animation-delay: 0s;"></animate>
+                            <animate attributeName="cx" values="84;84;84;84;84" keyTimes="0;0.25;0.5;0.75;1"
+                                keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" calcMode="spline" dur="2s"
+                                repeatCount="indefinite" begin="0s"
+                                style="animation-play-state: running; animation-delay: 0s;"></animate>
+                        </circle>
+                        <circle cx="79.4336" cy="50" r="10" fill="#5cb85c"
+                            style="animation-play-state: running; animation-delay: 0s;">
+                            <animate attributeName="r" values="0;10;10;10;0" keyTimes="0;0.25;0.5;0.75;1"
+                                keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" calcMode="spline" dur="2s"
+                                repeatCount="indefinite" begin="-1s"
+                                style="animation-play-state: running; animation-delay: 0s;"></animate>
+                            <animate attributeName="cx" values="16;16;50;84;84" keyTimes="0;0.25;0.5;0.75;1"
+                                keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" calcMode="spline" dur="2s"
+                                repeatCount="indefinite" begin="-1s"
+                                style="animation-play-state: running; animation-delay: 0s;"></animate>
+                        </circle>
+                        <circle cx="45.4336" cy="50" r="10" fill="#5bc0de"
+                            style="animation-play-state: running; animation-delay: 0s;">
+                            <animate attributeName="r" values="0;10;10;10;0" keyTimes="0;0.25;0.5;0.75;1"
+                                keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" calcMode="spline" dur="2s"
+                                repeatCount="indefinite" begin="-0.5s"
+                                style="animation-play-state: running; animation-delay: 0s;"></animate>
+                            <animate attributeName="cx" values="16;16;50;84;84" keyTimes="0;0.25;0.5;0.75;1"
+                                keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" calcMode="spline" dur="2s"
+                                repeatCount="indefinite" begin="-0.5s"
+                                style="animation-play-state: running; animation-delay: 0s;"></animate>
+                        </circle>
+                        <circle cx="16" cy="50" r="8.65693" fill="#337ab7"
+                            style="animation-play-state: running; animation-delay: 0s;">
+                            <animate attributeName="r" values="0;10;10;10;0" keyTimes="0;0.25;0.5;0.75;1"
+                                keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" calcMode="spline" dur="2s"
+                                repeatCount="indefinite" begin="0s"
+                                style="animation-play-state: running; animation-delay: 0s;"></animate>
+                            <animate attributeName="cx" values="16;16;50;84;84" keyTimes="0;0.25;0.5;0.75;1"
+                                keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" calcMode="spline" dur="2s"
+                                repeatCount="indefinite" begin="0s"
+                                style="animation-play-state: running; animation-delay: 0s;"></animate>
+                        </circle>
+                        <circle cx="16" cy="50" r="0" fill="#f0ad4e"
+                            style="animation-play-state: running; animation-delay: 0s;">
+                            <animate attributeName="r" values="0;0;10;10;10" keyTimes="0;0.25;0.5;0.75;1"
+                                keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" calcMode="spline" dur="2s"
+                                repeatCount="indefinite" begin="0s"
+                                style="animation-play-state: running; animation-delay: 0s;"></animate>
+                            <animate attributeName="cx" values="16;16;16;50;84" keyTimes="0;0.25;0.5;0.75;1"
+                                keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" calcMode="spline" dur="2s"
+                                repeatCount="indefinite" begin="0s"
+                                style="animation-play-state: running; animation-delay: 0s;"></animate>
+                        </circle>
+                    </svg>
+                </div>
+                <p class="text-center pt-5">By using our service you are accepting our <a href="">terms of use.</a></p>
+            </div>
+
+
+            <div id="listFormats">
+                <div class="row">
+                    <div class="col-md-6 text-center">
+                        <div class="ythumbnail"></div>
+                        <div id="resourceId"></div>
+                        <h5><b>
+                                <div id="videoTitle"></div>
+                            </b></h5>
+                    </div>
+                    <div class="col-md-6">
+                        <div>
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a data-toggle="tab" href="#video">Video</a></li>
+                                <li><a data-toggle="tab" href="#audio">Audio</a></li>
+                            </ul>
+
+                            <div class="tab-content mt-10">
+                                <div id="video" class="tab-pane fade in active">
+                                    <div id="listVideos"></div><br>
+                                </div>
+                                <div id="audio" class="tab-pane fade">
+                                    <div id="listAudios"></div><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="error"></div>
+        </div>
+    </section>
+
+    <section class="text-section">
+        <div class="custom_container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h3>YouTube Video Downloader</h3>
+                    <p>YouTube Video Downloader allows you to convert & download video from YouTube, Facebook, Video,
+                        Dailymotion, Youku, etc. to Mp3, Mp4 in HD quality. Y2mate supports downloading all video
+                        formats such as: MP4, M4V, 3GP, WMV, FLV, MO, MP3, WEBM, etc. You can easily download for free
+                        thousands of videos from YouTube and other websites.</p>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-7">
+                    <h4><b>Instructions</b></h4>
+                    <ol>
+                        <li>Search by name or directly paste the link of video you want to convert</li>
+                        <li>Click "Start" button to begin converting process</li>
+                        <li>Select the video/audio format you want to download, then click "Download" button</li>
+                    </ol>
+                </div>
+                <div class="col-md-5">
+                    <h4><b>Features</b></h4>
+                    <ul>
+                        <li>Unlimited downloads and always free</li>
+                        <li>High-speed video converter</li>
+                        <li>No registration required</li>
+                        <li>Support downloading with all formats</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="row pt-5">
+                <div class="col-md-4 text-center">
+                    <img src="assets/images/download-icon2.png" alt="" height="40px" width="40px">
+                    <h4><b>Free Download</b></h4>
+                    <p>Unlimited conversion and free download.</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <img src="assets/images/play-icon2.png" alt="" height="40px" width="40px">
+                    <h4><b>Video & Audio</b></h4>
+                    <p>Directly Download Video & Music.</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <img src="assets/images/tick-icon2.png" alt="" height="40px" width="40px">
+                    <h4><b>Easy Download</b></h4>
+                    <p>Fully compatible with all browsers.</p>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <p>If you can’t directly download video to your PC, please follow the guidelines below:</p>
+                    <p>Step1: Select the format you want and click "Download" button.</p>
+                    <p>Step2: In new window, press "CTRL + S" to save video OR right click to video, then select "Save
+                        as Video".</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!----- Footer ----->
+    <Footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>&copy;2020 All Rights Reserved</p>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </Footer>
+
+    <script>
+        $("#txtUrl").bind("paste", function (e) {
+            // access the clipboard using the api
+            var pastedData = e.originalEvent.clipboardData.getData('text');
+            getListFormats(pastedData);
+        });
+
+        function getListFormats(pastedData) {
+            $(".svg-loader").show();
+            let inputUrl = $('#txtUrl').val();
+            if (inputUrl !== "") {
+                pastedData = inputUrl;
+            }
+
+            let url = 'http://ytmp3.cm/listFormats?url=' + encodeURIComponent(pastedData); console.log(url);
+            $.getJSON(url, function (data) {
+                console.log(data);
+                try {
+                    if (!data.error) {
+                        showListFormats(data.formats);
+                        $('#error').hide();
+                    } else {
+                        $('#error').text('Failed to get list format:' + data.status);
+                        $('#error').show();
+                        $('#listFormats').hide();
+                    }
+                } catch (e) {
+                    console.log(e);
+                }
+            });
+        }
+        let listTimers = {};
+        function doConvert(resId, formatId) {
+            let urlConvert = 'http://49.12.43.222/convert?id=' + resId + '&formatId=' + formatId;
+
+            $.getJSON(urlConvert, function (data) {
+                try {
+                    if (!data.error) {
+                        let timer = listTimers[resId + formatId];
+                        if (!timer) {
+                            getDownloadLink(resId, formatId);
+                            timer = setInterval(function () {
+                                getDownloadLink(resId, formatId);
+                            }, 3000);
+                            listTimers[resId + formatId] = timer;
+                        }
+                    } else {
+                        $('error').text('Failed to convert format:' + data.status);
+                    }
+                } catch (e) {
+                    console.log(e);
+                }
+            });
+
+        }
+
+        function getDownloadLink(resId, formatId) {
+            let url = 'http://49.12.43.222/getLink?id=' + resId + '&formatId=' + formatId;
+            $.getJSON(url, function (data) {
+                try {
+                    if (!data.error) {
+                        let node = document.getElementById(`status${formatId}`);
+                        node.innerHTML = data.status + '  ';
+                        if (data.url) {
+                            // create download button
+                            let btn = document.createElement('button');
+                            btn.type = "submit";
+                            btn.innerHTML = 'Download';
+                            btn.onclick = function () {
+                                window.open(data.url);
+                            };
+                            node.appendChild(btn);
+
+                            // cancel timer
+                            let timer = listTimers[resId + formatId];
+                            if (timer) {
+                                clearInterval(timer);
+                                delete listTimers[resId + formatId]
+                            }
+                        } else {
+                            if (data.status == 'failed') {
+                                // failed to convert file
+                                // cancel timer
+                                let timer = listTimers[resId + formatId];
+                                if (timer) {
+                                    clearInterval(timer);
+                                    delete listTimers[resId + formatId]
+                                }
+                            }
+                        }
+                    } else {
+                        $('error').text('Failed to get download link:' + data.status);
+                    }
+                } catch (e) {
+                    console.log(e);
+                }
+            });
+        }
+
+        var extractHostname = function (url) {
+            var hostname;
+            //find & remove protocol (http, ftp, etc.) and get hostname
+
+            if (url.indexOf("//") > -1) {
+                hostname = url.split('/')[2];
+            }
+            else {
+                hostname = url.split('/')[0];
+            }
+
+            // find & remove port number
+            hostname = hostname.split(':')[0];
+
+            // find & remove "?"
+            hostname = hostname.split('?')[0];
+            if (url.indexOf('https://') == 0) {
+                return 'https://' + hostname;
+            } else {
+                return 'http://' + hostname;
+            }
+
+        }
+        var getUrlParameter = function getUrlParameter(sParam) {
+            var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+                sURLVariables = sPageURL.split('&'),
+                sParameterName,
+                i;
+
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('=');
+
+                if (sParameterName[0] === sParam) {
+                    return sParameterName[1] === undefined ? true : sParameterName[1];
+                }
+            }
+        };
+
+        if (typeof Object.assign != 'function') {
+            Object.assign = function (target) {
+                'use strict';
+                if (target == null) {
+                    throw new TypeError('Cannot convert undefined or null to object');
+                }
+
+                target = Object(target);
+                for (var index = 1; index < arguments.length; index++) {
+                    var source = arguments[index];
+                    if (source != null) {
+                        for (var key in source) {
+                            if (Object.prototype.hasOwnProperty.call(source, key)) {
+                                target[key] = source[key];
+                            }
+                        }
+                    }
+                }
+                return target;
+            };
+        }
+
+        function showListFormatsByTable(resId, listFormats, isVideo) {
+            var table_body = '<table border="1">';
+            table_body += '<tr><th>Quality</th><th>File size</th><th>Download</th></tr>';
+            for (var i = 0; i < listFormats.length; i++) {
+                let format = listFormats[i];
+
+                let table_row = '<tr>';
+
+                // quality
+                table_row += '<td>' + format.quality + '</td>';
+
+                // size
+                let size = Math.floor(format.fileSize / (1024 * 1024));
+                table_row += '<td>' + size + ' MB' + '</td>';
+
+                // button
+                table_row += `<td id="btn${format.formatId}"></td>`;
+
+                // status
+                // table_row += `<td id="status${format.formatId}"></td>`;
+
+                // done a row
+                table_row += '</tr>';
+                table_body += table_row;
+            }
+            table_body += '</table>';
+
+            if (isVideo) {
+                $('#listVideos').html(table_body);
+                $('#listVideos').show();
+            } else {
+                $('#listAudios').html(table_body);
+                $('#listAudios').show();
+            }
+
+            for (let format of listFormats) {
+                let node = document.getElementById(`btn${format.formatId}`);
+                let btn = document.createElement('button');
+                btn.type = "submit";
+                if (format.url) {
+                    btn.innerHTML = 'Download';
+                    btn.onclick = function () {
+                        window.open(format.url);
+                    }
+                } else {
+                    btn.innerHTML = 'Convert';
+                    btn.onclick = function () {
+                        doConvert(resId, format.formatId);
+                    }
+                }
+                node.appendChild(btn);
+            }
+
+        }
+        function showListFormats(formats) {
+            $('#videoTitle').text(formats.title);
+            $('#resourceId').text('Resource id: ' + formats.id + ', duration ' + formats.duration + 's');
+            showListFormatsByTable(formats.id, formats.video, true);
+            showListFormatsByTable(formats.id, formats.audio, false);
+            $(".ythumbnail").html("<img src='" + formats.thumbnail + "' alt='" + formats.title + "' />");
+            $(".svg-loader").hide();
+            $('#listFormats').show();
+        }
+
+    </script>
+</body>
+
+</html>

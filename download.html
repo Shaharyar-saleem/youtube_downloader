@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="referrer" content="no-referrer">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!----- Custom style sheet ----->
     <link rel="stylesheet" href="assets/css/style.css">
     <!----- Bootstrap CDN of style sheet ----->
@@ -29,13 +29,13 @@
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                        <a class="nav-link" href="#">FAQ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                        <a class="nav-link" href="#">Privacy Policy</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                        <a class="nav-link" href="#">Contact US</a>
                     </li>
                 </ul>
             </div>
@@ -46,19 +46,28 @@
 
     <!----- video container section ----->
 
-    <div id="video_container" class="text-center">
-        <label for="txtUrl">URL:</label>
-        <input type="text" id="txtUrl" name="fname">
-        <button type="submit" onclick="getListFormats()">Process!</button>
-    </div>
-    <div id="listFormats">
-        <div class="ythumbnail"></div>
-        <div id="resourceId"></div>
-        <div id="videoTitle"></div><br>
-        <div id="listVideos"></div><br>
-        <div id="listAudios"></div><br>
-    </div>
-    <div id="error"></div>
+    <section class="custom_container">
+        <div id="video_container" class="text-center video_container_section">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Download Video and Audio from YouTube</h3>
+                </div>
+            </div>
+                <label for="txtUrl">URL:</label>
+                <input type="text" id="txtUrl" name="fname">
+                <button type="submit" onclick="getListFormats()">Process!</button>
+            </div>
+            <div id="listFormats">
+                <div class="ythumbnail"></div>
+                <div id="resourceId"></div>
+                <div id="videoTitle"></div><br>
+                <div id="listVideos"></div><br>
+                <div id="listAudios"></div><br>
+            </div>
+            <div id="error"></div>
+        </div>
+    </section>
+
 
     <script>
         $("#txtUrl").bind("paste", function (e) {
@@ -283,15 +292,15 @@
 
     </script>
     <!-- Bootstrap scripts -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script> -->
 </body>
 
 </html>
