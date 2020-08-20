@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="icon" href="assets/images/logo.png" type="image/gif" sizes="16x16">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- Bootstrap 3 script -->
@@ -34,8 +35,8 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">FAQ</a></li>
+                    <li class="active"><a href="index.html">Home</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
                     <li><a href="#">Privacy Policy</a></li>
                     <li><a href="#">Contact US</a></li>
                 </ul>
@@ -56,10 +57,10 @@
                 </div>
             </div>
             <div class="mt-10">
-                <form action="">
+                
                     <input type="text" id="txtUrl" name="fname" placeholder="Paste URL here">
                     <button type="submit" onclick="getListFormats()" class="process_btn">Process!</button>
-                </form>
+                
                 <div class="svg-loader"><svg width="60px" height="60px" xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-ellipsis"
                         style="shape-rendering: auto; animation-play-state: running; animation-delay: 0s; background: none;">
@@ -142,7 +143,7 @@
                             </ul>
 
                             <div class="tab-content mt-10">
-                                <div id="video" class="tab-pane fade in active">
+                                <div id="video" class="tab-pane fade in active" style="background-color: white;">
                                     <div id="listVideos"></div><br>
                                 </div>
                                 <div id="audio" class="tab-pane fade">
